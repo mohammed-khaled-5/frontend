@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm i -g @angular/cli
 RUN npm install
-RUN set NODE_OPTIONS=--max_old_space_size=4096
+RUN set NODE_OPTIONS=--max_old_space_size=8192
 RUN npm run build --prod
 
 FROM nginxinc/nginx-unprivileged
