@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm i -g @angular/cli
 RUN npm install
-RUN npm run build 
+RUN npm run build --prod
 
 FROM nginxinc/nginx-unprivileged
 COPY --from=builder /usr/src/app/dist/Tools-project-phase1-angular /usr/share/nginx/html
