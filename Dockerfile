@@ -1,6 +1,6 @@
 FROM node:16-alpine as builder
 RUN mkdir -p /app
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY . .
 RUN npm i -g @angular/cli
 RUN npm install
