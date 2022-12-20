@@ -2,7 +2,7 @@ FROM node:16-alpine as builder
 RUN mkdir -p /app
 WORKDIR /usr/src/app
 COPY . .
-RUN set NODE_OPTIONS=--max-old-space-size=4096
+RUN set NODE_OPTIONS=--max-old-space-size=8192
 RUN npm i -g @angular/cli
 RUN npm install
 RUN npm run build --prod
