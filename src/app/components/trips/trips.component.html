@@ -1,0 +1,63 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Pick station</th>
+            <th>Arrive station</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of listOfData" class="editable-row">
+            <td>{{data.id}}</td>
+            <td>
+                {{ data.from_station.name }}
+            </td>
+            <td>
+                {{ data.to_station.name }}
+            </td>
+            <td>
+                {{ data.start_time }}
+            </td>
+            <td>
+                {{ data.end_time }}
+            </td>
+            <td>
+                <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteTripById(data.id)">Delete</a>
+            </td>
+            <td>
+                <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()"
+                    (nzOnOk)="handleOk(data.id)">
+                    <ng-container *nzModalContent>
+                        <nz-form-label>Please enter a pick station</nz-form-label>
+                        <nz-select [(ngModel)]="trip.from_station.id" nzPlaceHolder="Choose">
+                            <nz-option *ngFor="let data of optionList; let x = index" nzValue="{{optionList[x].id}}"
+                                nzLabel="{{optionList[x].name}}"></nz-option>
+                        </nz-select>
+                        <br />
+                        <nz-form-label>Please enter a station to arrive in</nz-form-label>
+                        <br />
+                        <nz-select [(ngModel)]="trip.to_station.id" nzPlaceHolder="Choose">
+                            <nz-option *ngFor="let data of optionList; let m = index" nzValue="{{optionList[m].id}}"
+                                nzLabel="{{optionList[m].name}}"></nz-option>
+                        </nz-select>
+                        <br />
+                        <nz-form-label>Please a start date</nz-form-label>
+                        <br />
+                        <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" [(ngModel)]="trip.start_time"
+                            (ngModelChange)="onChange($event)" (nzOnOk)="onOk($event)"></nz-date-picker>
+                        <br />
+                        <nz-form-label>Please an end date</nz-form-label>
+                        <br />
+                        <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" [(ngModel)]="trip.end_time"
+                            (ngModelChange)="onChange($event)" (nzOnOk)="onOk($event)"></nz-date-picker>
+                    </ng-container>
+                </nz-modal>
+                <a (click)="showModal()">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

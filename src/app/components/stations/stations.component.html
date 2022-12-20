@@ -1,0 +1,25 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th nzWidth="30%">Name</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of listOfData" class="editable-row">
+            <td>{{data.id}}</td>
+            <td>
+                <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                    {{ data.name }}
+                </div>
+                <input [hidden]="editId !== data.id" type="text" nz-input [(ngModel)]="station.name"
+                    (blur)="stopEdit(data.id)" />
+            </td>
+            <td>
+                <a nz-popconfirm nzPopconfirmTitle="Sure to delete?"
+                    (nzOnConfirm)="deleteStationById(data.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

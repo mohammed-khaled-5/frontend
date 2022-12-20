@@ -1,0 +1,7 @@
+<nz-form-label>Please enter a station name</nz-form-label>
+<nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <input [(ngModel)]="station.name" type="text" nz-input placeholder="enter station name to create" />
+</nz-input-group>
+<ng-template #suffixButton>
+    <button (click)="createStation()" nz-button nzType="primary" nzSize="large" nzSearch>Create</button>
+</ng-template>
