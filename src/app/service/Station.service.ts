@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Station } from '../model/Station.model';
 
-const url = 'http://localhost:8080/station';
+const url = 'https://backend5-mohammed-khaled-dev.apps.sandbox.x8i5.p1.openshiftapps.com/station';
 
 @Injectable({
   providedIn: 'root',
