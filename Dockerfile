@@ -5,7 +5,7 @@ COPY . .
 RUN npm i -g @angular/cli
 RUN npm install
 RUN set NODE_OPTIONS=--max_old_space_size=8192
-RUN npm run build --prod
+RUN npm run build-serve
 
 FROM nginxinc/nginx-unprivileged
 COPY --from=builder /usr/src/app/dist/tools-project-phase1-angular /usr/share/nginx/html
