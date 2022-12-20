@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Trip } from "../model/Trip.model";
 
-const url = "http://localhost:8080/trip";
+const url = "https://backend5-mohammed-khaled-dev.apps.sandbox.x8i5.p1.openshiftapps.com/trip";
 
 @Injectable({
   providedIn: "root",
